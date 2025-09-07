@@ -13,7 +13,7 @@ from calibre.constants import config_dir
 from calibre.db.categories import Tag, category_display_order
 from calibre.db.constants import DATA_FILE_PATTERN, TEMPLATE_ICON_INDICATOR
 from calibre.ebooks.metadata.sources.identify import urls_from_identifiers
-from calibre.library.comments import comments_to_html, markdown
+from calibre.library.comments import comments
 from calibre.library.field_metadata import category_icon_map
 from calibre.utils.config import tweaks
 from calibre.utils.date import UNDEFINED_DATE, isoformat, local_tz
