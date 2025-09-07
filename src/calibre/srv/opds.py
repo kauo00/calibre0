@@ -18,7 +18,7 @@ from calibre import prepare_string_for_xml as xml
 from calibre.constants import __appname__
 from calibre.db.view import sanitize_sort_field_name
 from calibre.ebooks.metadata import authors_to_string, fmt_sidx, rating_to_stars
-from calibre.library.comments import comments_to_html
+from calibre.library.comments import comments
 from calibre.srv.errors import HTTPInternalServerError, HTTPNotFound
 from calibre.srv.http_request import parse_uri
 from calibre.srv.routes import endpoint
@@ -204,11 +204,11 @@ def ACQUISITION_ENTRY(book_id, updated, request_context):
                                     fm['is_multiple']['ui_to_list'],
                                     joinval=fm['is_multiple']['list_to_ui']))))
             elif datatype == 'comments' or (fm['datatype'] == 'composite' and fm['display'].get('contains_html', False)):
-                extra.append(f'{xml(name)}: {comments_to_html(str(val))}<br />')
+                extra.append(f'{xml(name)}: {comments(str(val))}<br />')
             else:
                 extra.append(f'{xml(name)}: {xml(str(val))}<br />')
     if mi.comments:
-        comments = comments_to_html(mi.comments)
+        comments = comments(mi.comments)
         extra.append(comments)
     if extra:
         extra = html_to_lxml('\n'.join(extra))
